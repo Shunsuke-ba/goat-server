@@ -2,8 +2,8 @@ package main
 
 import (
 	"context"
-	"net/http"
 
+	"github.com/Shunsuke-ba/goat-server/mod/util"
 	"github.com/labstack/echo/v4"
 	"github.com/labstack/echo/v4/middleware"
 )
@@ -13,16 +13,13 @@ func main() {
 	e.Use(middleware.Recover())
 	e.Use(middleware.Logger())
 
+	util.CheckEnv(e)
+
 	c := context.Background()
 	repo := initApplication(c)
 
 	e.GET("/", repo.Health)
-	e.GET("/game", repo.GameList)
+	e.GET("/gamelist", repo.GameResults)
 
 	e.Logger.Fatal(e.Start(":8080"))
-}
-
-func healthCheck(c echo.Context) error {
-	c.JSON(http.StatusOK, "OK")
-	return nil
 }

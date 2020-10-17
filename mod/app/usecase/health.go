@@ -10,7 +10,7 @@ type Health func(ctx context.Context) string
 
 func ProvideHealthCase(
 	ctx context.Context,
-	repo domain.HealthRepository,
+	repo domain.Health,
 ) Health {
 
 	return func(ctx context.Context) string {

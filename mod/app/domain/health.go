@@ -1,8 +1,8 @@
 package domain
 
-type HealthRepository struct {
+type Health struct {
 }
 
-func (h HealthRepository) Check() string {
+func (h Health) Check() string {
 	return "OK!"
 }

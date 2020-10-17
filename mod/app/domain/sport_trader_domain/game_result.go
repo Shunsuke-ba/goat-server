@@ -95,3 +95,13 @@ type (
 		Number    int    `json:"number"`
 	}
 )
+
+// GlobalBasketballの中から日本バスケを取り出す(Bリーグ)
+func (g GameResults) JapanValidation() (japanGames GameResults) {
+	for _, game := range g.Results {
+		if game.SportEvent.Tournament.Category.CountryCode == "JPN" {
+			japanGames.Results = append(japanGames.Results, game)
+		}
+	}
+	return
+}

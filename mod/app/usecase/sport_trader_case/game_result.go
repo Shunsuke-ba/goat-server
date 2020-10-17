@@ -45,6 +45,8 @@ func ProvideGameResultsCase(
 			return
 		}
 
+		gameResults = gameResults.JapanValidation()
+
 		return
 	}
 }

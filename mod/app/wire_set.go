@@ -10,17 +10,20 @@ import (
 )
 
 type AllRepository struct {
-	Health      echo.HandlerFunc
-	GameResults echo.HandlerFunc
+	Health        echo.HandlerFunc
+	GameResults   echo.HandlerFunc
+	GameSchedules echo.HandlerFunc
 }
 
 func NewAllRepository(
 	health handler.ProvideHealth,
 	gameResults st.ProvideGameResults,
+	gameSchedules st.ProvideGameSchedules,
 ) AllRepository {
 	return AllRepository{
-		Health:      health.Echoer(),
-		GameResults: gameResults.Echoer(),
+		Health:        health.Echoer(),
+		GameResults:   gameResults.Echoer(),
+		GameSchedules: gameSchedules.Echoer(),
 	}
 }
 

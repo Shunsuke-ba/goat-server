@@ -8,4 +8,5 @@ import (
 var Set = wire.NewSet(
 	ProvideHealthCase,
 	st.ProvideGameResultsCase,
+	st.ProvideGameShedulesCase,
 )

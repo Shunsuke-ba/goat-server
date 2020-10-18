@@ -23,6 +23,8 @@ func initApplication(ctx context.Context) app.AllRepository {
 	provideHealth := handler.ProvideHealthHandler(usecaseHealth)
 	gameResults := sport_trader_case.ProvideGameResultsCase(ctx)
 	provideGameResults := sport_trader_handler.ProvideGameResultsHandler(gameResults)
-	allRepository := app.NewAllRepository(provideHealth, provideGameResults)
+	gameSchedules := sport_trader_case.ProvideGameShedulesCase(ctx)
+	provideGameSchedules := sport_trader_handler.ProvideGameSchedulesHandler(gameSchedules)
+	allRepository := app.NewAllRepository(provideHealth, provideGameResults, provideGameSchedules)
 	return allRepository
 }

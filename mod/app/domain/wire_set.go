@@ -7,6 +7,7 @@ import (
 )
 
 var Set = wire.NewSet(
+	// GameResults
 	wire.Struct(new(Health)),
 	wire.Struct(new(st.GameResults)),
 	wire.Struct(new(st.Results)),
@@ -21,6 +22,12 @@ var Set = wire.NewSet(
 	wire.Struct(new(st.SportEventStatus)),
 	wire.Struct(new(st.PeriodScores)),
 
+	// GameSchedules
 	wire.Struct(new(st.GameSchedules)),
 	wire.Struct(new(st.SportEvents)),
+
+	// HeadToHeads
+	wire.Struct(new(st.HeadToHeads)),
+	wire.Struct(new(st.Teams)),
+	wire.Struct(new(st.LastMeetings)),
 )

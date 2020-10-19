@@ -9,4 +9,5 @@ var Set = wire.NewSet(
 	ProvideHealthHandler,
 	st.ProvideGameResultsHandler,
 	st.ProvideGameSchedulesHandler,
+	st.ProvideHeadToHeadsHandler,
 )

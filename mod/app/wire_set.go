@@ -13,17 +13,20 @@ type AllRepository struct {
 	Health        echo.HandlerFunc
 	GameResults   echo.HandlerFunc
 	GameSchedules echo.HandlerFunc
+	HeadToHeads   echo.HandlerFunc
 }
 
 func NewAllRepository(
 	health handler.ProvideHealth,
 	gameResults st.ProvideGameResults,
 	gameSchedules st.ProvideGameSchedules,
+	headToHeads st.ProvideHeadToHeads,
 ) AllRepository {
 	return AllRepository{
 		Health:        health.Echoer(),
 		GameResults:   gameResults.Echoer(),
 		GameSchedules: gameSchedules.Echoer(),
+		HeadToHeads:   headToHeads.Echoer(),
 	}
 }
 

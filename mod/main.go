@@ -23,7 +23,8 @@ func main() {
 
 	// routing
 	e.GET("/", repo.Health)
-	e.GET("/gamelist", repo.GameResults)
+	e.GET("/game/results", repo.GameResults)
+	e.GET("/game/schedules", repo.GameSchedules)
 
 	// server start
 	e.Logger.Fatal(e.Start(":8080"))

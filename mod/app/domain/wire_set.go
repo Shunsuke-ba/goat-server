@@ -20,4 +20,7 @@ var Set = wire.NewSet(
 	wire.Struct(new(st.Venue)),
 	wire.Struct(new(st.SportEventStatus)),
 	wire.Struct(new(st.PeriodScores)),
+
+	wire.Struct(new(st.GameSchedules)),
+	wire.Struct(new(st.SportEvents)),
 )

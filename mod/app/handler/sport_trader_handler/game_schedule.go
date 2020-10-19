@@ -20,7 +20,7 @@ func ProvideGameSchedulesHandler(uc usecase.GameSchedules) ProvideGameSchedules 
 	return func(c echo.Context) error {
 		gameSchedules, err := uc(c.Request().Context())
 		if err != nil {
-			return c.JSON(http.StatusInternalServerError, err)
+			return err
 		}
 
 		return c.JSON(http.StatusOK, gameSchedules)

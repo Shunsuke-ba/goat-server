@@ -25,6 +25,8 @@ func initApplication(ctx context.Context) app.AllRepository {
 	provideGameResults := sport_trader_handler.ProvideGameResultsHandler(gameResults)
 	gameSchedules := sport_trader_case.ProvideGameShedulesCase(ctx)
 	provideGameSchedules := sport_trader_handler.ProvideGameSchedulesHandler(gameSchedules)
-	allRepository := app.NewAllRepository(provideHealth, provideGameResults, provideGameSchedules)
+	headToHeads := sport_trader_case.ProvideHeadToHeadsCase(ctx)
+	provideHeadToHeads := sport_trader_handler.ProvideHeadToHeadsHandler(headToHeads)
+	allRepository := app.NewAllRepository(provideHealth, provideGameResults, provideGameSchedules, provideHeadToHeads)
 	return allRepository
 }

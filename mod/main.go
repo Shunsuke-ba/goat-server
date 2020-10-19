@@ -22,9 +22,14 @@ func main() {
 	repo := initApplication(c)
 
 	// routing
-	e.GET("/", repo.Health)
-	e.GET("/game/results", repo.GameResults)
-	e.GET("/game/schedules", repo.GameSchedules)
+	e.GET("/health", repo.Health)
+
+	game := e.Group("/game")
+	{
+		game.GET("/results", repo.GameResults)
+		game.GET("/schedules", repo.GameSchedules)
+		game.GET("/headtohead", repo.HeadToHeads)
+	}
 
 	// server start
 	e.Logger.Fatal(e.Start(":8080"))

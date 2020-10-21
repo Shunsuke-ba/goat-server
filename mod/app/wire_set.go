@@ -1,4 +1,4 @@
-package app
+package main
 
 import (
 	"github.com/Shunsuke-ba/goat-server/mod/app/domain"

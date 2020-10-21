@@ -1,0 +1,14 @@
+version: "3.8"
+
+services:
+  DB:
+    container_name: goat-db
+    image: mysql
+    environment:
+      MYSQL_ROOT_PASSWORD: ${MYSQL_ROOT_PASSWORD}
+    volumes:
+      - ./mysql/init:/docker-entrypoint-initdb.d
+      - ./mysql/data:/var/lib/mysql
+    ports:
+      - "3316:3306"
+    

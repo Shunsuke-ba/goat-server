@@ -7,7 +7,6 @@ package main
 
 import (
 	"context"
-	"github.com/Shunsuke-ba/goat-server/mod/app"
 	"github.com/Shunsuke-ba/goat-server/mod/app/domain"
 	"github.com/Shunsuke-ba/goat-server/mod/app/handler"
 	"github.com/Shunsuke-ba/goat-server/mod/app/handler/sport_trader_handler"
@@ -17,7 +16,7 @@ import (
 
 // Injectors from wire.go:
 
-func initApplication(ctx context.Context) app.AllRepository {
+func initApplication(ctx context.Context) AllRepository {
 	health := domain.Health{}
 	usecaseHealth := usecase.ProvideHealthCase(ctx, health)
 	provideHealth := handler.ProvideHealthHandler(usecaseHealth)
@@ -27,6 +26,6 @@ func initApplication(ctx context.Context) app.AllRepository {
 	provideGameSchedules := sport_trader_handler.ProvideGameSchedulesHandler(gameSchedules)
 	headToHeads := sport_trader_case.ProvideHeadToHeadsCase(ctx)
 	provideHeadToHeads := sport_trader_handler.ProvideHeadToHeadsHandler(headToHeads)
-	allRepository := app.NewAllRepository(provideHealth, provideGameResults, provideGameSchedules, provideHeadToHeads)
+	allRepository := NewAllRepository(provideHealth, provideGameResults, provideGameSchedules, provideHeadToHeads)
 	return allRepository
 }

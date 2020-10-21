@@ -13,7 +13,7 @@ all: test build
 build:
 	$(GOBUILD) -o $(BINARY_NAME) -v ./mod
 run:
-	$(GORUN) mod/main.go mod/wire_gen.go
+	$(GORUN) mod/app/main.go mod/app/wire_gen.go mod/app/wire_set.go
 test:
 	$(GORTEST) -v ./...
 db:

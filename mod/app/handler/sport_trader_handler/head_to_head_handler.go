@@ -12,8 +12,8 @@ type (
 	ProvideHeadToHeads echo.HandlerFunc
 
 	HeadToHeadParam struct {
-		TeamID1 string `json:"team1_id"`
-		TeamID2 string `json:"team2_id"`
+		Team1ID string `json:"team1_id"`
+		Team2ID string `json:"team2_id"`
 	}
 )
 
@@ -27,7 +27,7 @@ func ProvideHeadToHeadsHandler(uc usecase.HeadToHeads) ProvideHeadToHeads {
 		if err := c.Bind(&param); err != nil {
 			return err
 		}
-		headToHeads, err := uc(c.Request().Context(), param.TeamID1, param.TeamID2)
+		headToHeads, err := uc(c.Request().Context(), param.Team1ID, param.Team2ID)
 		if err != nil {
 			return err
 		}

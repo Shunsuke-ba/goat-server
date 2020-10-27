@@ -6,7 +6,7 @@ BINARY_NAME=mybinary
 BINARY_UNIX=$(BINARY_NAME)_unix
 DOCKER-COMPOSE=docker-compose
 DOCKER=docker
-CONTAINER_NAME=goat_db
+CONTAINER_NAME=goat_dev
 DEPLOY_FILE=app.yml
 
 all: test build
@@ -25,4 +25,3 @@ sql:
 	$(DOCKER) exec -it $(CONTAINER_NAME) mysql -u root -p
 deploy:
 	gcloud app deploy $(DEPLOY_FILE)
-	

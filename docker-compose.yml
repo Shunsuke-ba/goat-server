@@ -2,7 +2,7 @@ version: "3.8"
 
 services:
   DB:
-    container_name: goat-dev
+    container_name: goat_dev
     image: mysql
     environment:
       MYSQL_ROOT_PASSWORD: ${MYSQL_ROOT_PASSWORD}

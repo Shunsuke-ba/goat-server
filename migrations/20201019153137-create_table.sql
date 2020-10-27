@@ -118,6 +118,7 @@ CREATE TABLE IF NOT EXISTS `bet` (
     `pay_done` BOOLEAN NOT NULL DEFAULT FALSE,
     -- `content_id` INT NOT NULL,
     `created_at` DATETIME NOT NULL DEFAULT CURRENT_TIMESTAMP,
+    `deleted_at` DATETIME NOT NULL DEFAULT 'NONE',
     PRIMARY KEY (`id`))
 ENGINE = InnoDB;
 

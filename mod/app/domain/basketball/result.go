@@ -1,9 +1,9 @@
-package sport_trader_domain
+package basketball
 
 import "time"
 
 type (
-	GameResults struct {
+	BasketballResults struct {
 		Schema      string    `json:"schema"`
 		GeneratedAt time.Time `json:"generated_at"`
 		Results     []Results `json:"results"`
@@ -97,7 +97,7 @@ type (
 )
 
 // GlobalBasketballの中から日本バスケを取り出す(Bリーグ)
-func (g GameResults) JapanValidation() (japanGames GameResults) {
+func (g BasketballResults) JapanValidation() (japanGames BasketballResults) {
 	for _, game := range g.Results {
 		if game.SportEvent.Tournament.Category.CountryCode == "JPN" {
 			japanGames.Results = append(japanGames.Results, game)

@@ -1,4 +1,4 @@
-package sport_trader_case
+package basketball
 
 import (
 	"context"
@@ -8,17 +8,17 @@ import (
 	"os"
 	"path"
 
-	domain "github.com/Shunsuke-ba/goat-server/mod/app/domain/sport_trader_domain"
+	domain "github.com/Shunsuke-ba/goat-server/mod/app/domain/basketball"
 	"github.com/Shunsuke-ba/goat-server/mod/util/config"
 )
 
-type HeadToHeads func(ctx context.Context, team1, team2 string) (headToHead domain.HeadToHeads, err error)
+type Matches func(ctx context.Context, team1, team2 string) (matches domain.BasketballMatches, err error)
 
-func ProvideHeadToHeadsCase(
+func ProvideMatchesCase(
 	ctx context.Context,
-) HeadToHeads {
+) Matches {
 
-	return func(ctx context.Context, team1ID, team2ID string) (headToHeads domain.HeadToHeads, err error) {
+	return func(ctx context.Context, team1ID, team2ID string) (matches domain.BasketballMatches, err error) {
 		url := config.BASEURL + path.Join(
 			config.BASETBALL+"-"+config.ACCESSLEVEL_TRIAL+config.VERSION1,
 			config.LANGUAGE_CODE,
@@ -42,7 +42,7 @@ func ProvideHeadToHeadsCase(
 			return
 		}
 
-		if err = json.Unmarshal(body, &headToHeads); err != nil {
+		if err = json.Unmarshal(body, &matches); err != nil {
 			return
 		}
 

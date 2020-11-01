@@ -14,4 +14,7 @@ func CheckEnv(e *echo.Echo) {
 	if os.Getenv("BASKETBALL_KEY") == "" {
 		e.Logger.Fatal("failed load env BASKETBALL_KEY")
 	}
+	if os.Getenv("SOCCER_KEY") == "" {
+		e.Logger.Fatal("failed load env SOCCER_KEY")
+	}
 }

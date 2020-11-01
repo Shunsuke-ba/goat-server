@@ -1,4 +1,4 @@
-package sport_trader_case
+package basketball
 
 import (
 	"context"
@@ -9,17 +9,17 @@ import (
 	"os"
 	"path"
 
-	domain "github.com/Shunsuke-ba/goat-server/mod/app/domain/sport_trader_domain"
+	domain "github.com/Shunsuke-ba/goat-server/mod/app/domain/basketball"
 	"github.com/Shunsuke-ba/goat-server/mod/util/config"
 )
 
-type GameResults func(ctx context.Context) (gameResults domain.GameResults, err error)
+type Results func(ctx context.Context) (gameResults domain.BasketballResults, err error)
 
-func ProvideGameResultsCase(
+func ProvideResultsCase(
 	ctx context.Context,
-) GameResults {
+) Results {
 
-	return func(ctx context.Context) (gameResults domain.GameResults, err error) {
+	return func(ctx context.Context) (results domain.BasketballResults, err error) {
 		url := config.BASEURL + path.Join(
 			config.BASETBALL+"-"+config.ACCESSLEVEL_TRIAL+config.VERSION1,
 			config.LANGUAGE_CODE,
@@ -40,12 +40,12 @@ func ProvideGameResultsCase(
 			return
 		}
 
-		if err = json.Unmarshal(body, &gameResults); err != nil {
+		if err = json.Unmarshal(body, &results); err != nil {
 			err = errors.New("ProvideGameResultsCase json.Unmarshal failed")
 			return
 		}
 
-		gameResults = gameResults.JapanValidation()
+		results = results.JapanValidation()
 
 		return
 	}

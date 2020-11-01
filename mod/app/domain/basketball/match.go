@@ -1,8 +1,8 @@
-package sport_trader_domain
+package basketball
 
 import "time"
 
-type HeadToHeads struct {
+type BasketballMatches struct {
 	Schema       string       `json:"schema"`
 	GeneratedAt  time.Time    `json:"generated_at"`
 	Teams        []Teams      `json:"teams"`

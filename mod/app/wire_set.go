@@ -1,32 +1,36 @@
-package main
+package app
 
 import (
 	"github.com/Shunsuke-ba/goat-server/mod/app/domain"
 	"github.com/Shunsuke-ba/goat-server/mod/app/handler"
-	st "github.com/Shunsuke-ba/goat-server/mod/app/handler/sport_trader_handler"
+	"github.com/Shunsuke-ba/goat-server/mod/app/handler/basketball"
+	"github.com/Shunsuke-ba/goat-server/mod/app/handler/soccer"
 	"github.com/Shunsuke-ba/goat-server/mod/app/usecase"
 	"github.com/google/wire"
 	"github.com/labstack/echo/v4"
 )
 
 type AllRepository struct {
-	Health        echo.HandlerFunc
-	GameResults   echo.HandlerFunc
-	GameSchedules echo.HandlerFunc
-	HeadToHeads   echo.HandlerFunc
+	Health              echo.HandlerFunc
+	BasketballResults   echo.HandlerFunc
+	BasketballSchedules echo.HandlerFunc
+	BasketballMatches   echo.HandlerFunc
+	SoccerResults       echo.HandlerFunc
 }
 
 func NewAllRepository(
 	health handler.ProvideHealth,
-	gameResults st.ProvideGameResults,
-	gameSchedules st.ProvideGameSchedules,
-	headToHeads st.ProvideHeadToHeads,
+	basketballResults basketball.ProvideResults,
+	basketballSchedules basketball.ProvideSchedules,
+	basketballMatches basketball.ProvideMatches,
+	soccerResults soccer.ProvideResults,
 ) AllRepository {
 	return AllRepository{
-		Health:        health.Echoer(),
-		GameResults:   gameResults.Echoer(),
-		GameSchedules: gameSchedules.Echoer(),
-		HeadToHeads:   headToHeads.Echoer(),
+		Health:              health.Echoer(),
+		BasketballResults:   basketballResults.Echoer(),
+		BasketballSchedules: basketballSchedules.Echoer(),
+		BasketballMatches:   basketballMatches.Echoer(),
+		SoccerResults:       soccerResults.Echoer(),
 	}
 }
 

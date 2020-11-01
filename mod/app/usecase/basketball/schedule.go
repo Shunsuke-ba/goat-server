@@ -1,4 +1,4 @@
-package sport_trader_case
+package basketball
 
 import (
 	"context"
@@ -9,17 +9,17 @@ import (
 	"os"
 	"path"
 
-	domain "github.com/Shunsuke-ba/goat-server/mod/app/domain/sport_trader_domain"
+	domain "github.com/Shunsuke-ba/goat-server/mod/app/domain/basketball"
 	"github.com/Shunsuke-ba/goat-server/mod/util/config"
 )
 
-type GameSchedules func(ctx context.Context) (gameSchedules domain.GameSchedules, err error)
+type Schedules func(ctx context.Context) (schedules domain.BasketballSchedules, err error)
 
-func ProvideGameShedulesCase(
+func ProvideShedulesCase(
 	ctx context.Context,
-) GameSchedules {
+) Schedules {
 
-	return func(ctx context.Context) (gameSchedule domain.GameSchedules, err error) {
+	return func(ctx context.Context) (schedules domain.BasketballSchedules, err error) {
 		url := config.BASEURL + path.Join(
 			config.BASETBALL+"-"+config.ACCESSLEVEL_TRIAL+config.VERSION1,
 			config.LANGUAGE_CODE,
@@ -40,11 +40,11 @@ func ProvideGameShedulesCase(
 			return
 		}
 
-		if err = json.Unmarshal(body, &gameSchedule); err != nil {
+		if err = json.Unmarshal(body, &schedules); err != nil {
 			return
 		}
 
-		gameSchedule = gameSchedule.JapanValidation()
+		schedules = schedules.JapanValidation()
 
 		return
 	}

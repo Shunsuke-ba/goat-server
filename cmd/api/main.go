@@ -26,9 +26,19 @@ func main() {
 
 	game := e.Group("/game")
 	{
-		game.GET("/results", repo.GameResults)
-		game.GET("/schedules", repo.GameSchedules)
-		game.GET("/headtohead", repo.HeadToHeads)
+		japan := game.Group("/japan")
+		{
+			basketball := japan.Group("/basketball")
+			{
+				basketball.GET("/results", repo.BasketballResults)
+				basketball.GET("/schedules", repo.BasketballSchedules)
+				basketball.GET("/headtohead", repo.BasketballMatches)
+			}
+			soccer := japan.Group("/soccer")
+			{
+				soccer.GET("/results", repo.SoccerResults)
+			}
+		}
 	}
 
 	// server start

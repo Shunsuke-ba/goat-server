@@ -2,3 +2,4 @@
 mod/util/config
 mysql/data/*
 dbconfig.yml
+mysql

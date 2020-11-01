@@ -2,16 +2,16 @@
 
 ### ディレクトリ構造
 - /cmd
-/api https://github.com/Shunsuke-ba/goat-server/cmd/api/README.md(主に外部APIとの連携とサービス機能)
-/cron coming soon ...
+  - /api https://github.com/Shunsuke-ba/goat-server/cmd/api/README.md(主に外部APIとの連携とサービス機能)
+  - /cron coming soon ...
 
 - /mod
-/app - domain ドメイン
+  - /app - domain ドメイン
      - driver　インフラストラクチャ
      - handler　インターフェース
      - usecase ユースケース
 
-/uil - config 諸config
+  - /util - config 諸config
 
 
 ### 概要

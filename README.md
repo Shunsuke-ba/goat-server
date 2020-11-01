@@ -6,7 +6,8 @@
   - /cron coming soon ...
 
 - /mod
-  - /app - domain ドメイン
+  - /app 
+    - domain ドメイン
      - driver　インフラストラクチャ
      - handler　インターフェース
      - usecase ユースケース
